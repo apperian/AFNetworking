@@ -26,7 +26,7 @@
 #ifndef _AFNETWORKING_
     #define _AFNETWORKING_
 
-    #import "AFURLConnectionOperation.h"
+    #import "APAFURLConnectionOperation.h"
 
     #import "APAFHTTPRequestOperation.h"
     #import "APAFJSONRequestOperation.h"
