@@ -1,4 +1,4 @@
-// AFXMLRequestOperation.m
+// APAFXMLRequestOperation.m
 //
 // Copyright (c) 2011 Gowalla (http://gowalla.com/)
 //
@@ -20,7 +20,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "AFXMLRequestOperation.h"
+#import "APAFXMLRequestOperation.h"
 
 #include <Availability.h>
 
@@ -34,7 +34,7 @@ static dispatch_queue_t xml_request_operation_processing_queue() {
     return af_xml_request_operation_processing_queue;
 }
 
-@interface AFXMLRequestOperation ()
+@interface APAFXMLRequestOperation ()
 @property (readwrite, nonatomic, strong) NSXMLParser *responseXMLParser;
 #ifdef __MAC_OS_X_VERSION_MIN_REQUIRED
 @property (readwrite, nonatomic, strong) NSXMLDocument *responseXMLDocument;
@@ -42,7 +42,7 @@ static dispatch_queue_t xml_request_operation_processing_queue() {
 @property (readwrite, nonatomic, strong) NSError *XMLError;
 @end
 
-@implementation AFXMLRequestOperation
+@implementation APAFXMLRequestOperation
 @synthesize responseXMLParser = _responseXMLParser;
 #ifdef __MAC_OS_X_VERSION_MIN_REQUIRED
 @synthesize responseXMLDocument = _responseXMLDocument;
@@ -53,14 +53,14 @@ static dispatch_queue_t xml_request_operation_processing_queue() {
 											 success:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, NSXMLParser *XMLParser))success
 											 failure:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, NSXMLParser *XMLParser))failure
 {
-    AFXMLRequestOperation *requestOperation = [(AFXMLRequestOperation *)[self alloc] initWithRequest:urlRequest];
+    APAFXMLRequestOperation *requestOperation = [(APAFXMLRequestOperation *)[self alloc] initWithRequest:urlRequest];
     [requestOperation setCompletionBlockWithSuccess:^(APAFHTTPRequestOperation *operation, id responseObject) {
         if (success) {
             success(operation.request, operation.response, responseObject);
         }
     } failure:^(APAFHTTPRequestOperation *operation, NSError *error) {
         if (failure) {
-            failure(operation.request, operation.response, error, [(AFXMLRequestOperation *)operation responseXMLParser]);
+            failure(operation.request, operation.response, error, [(APAFXMLRequestOperation *)operation responseXMLParser]);
         }
     }];
 
@@ -72,15 +72,15 @@ static dispatch_queue_t xml_request_operation_processing_queue() {
 											   success:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, NSXMLDocument *document))success
 											   failure:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, NSXMLDocument *document))failure
 {
-    AFXMLRequestOperation *requestOperation = [[self alloc] initWithRequest:urlRequest];
+    APAFXMLRequestOperation *requestOperation = [[self alloc] initWithRequest:urlRequest];
     [requestOperation setCompletionBlockWithSuccess:^(APAFHTTPRequestOperation *operation, __unused id responseObject) {
         if (success) {
-            NSXMLDocument *XMLDocument = [(AFXMLRequestOperation *)operation responseXMLDocument];
+            NSXMLDocument *XMLDocument = [(APAFXMLRequestOperation *)operation responseXMLDocument];
             success(operation.request, operation.response, XMLDocument);
         }
     } failure:^(APAFHTTPRequestOperation *operation, NSError *error) {
         if (failure) {
-            NSXMLDocument *XMLDocument = [(AFXMLRequestOperation *)operation responseXMLDocument];
+            NSXMLDocument *XMLDocument = [(APAFXMLRequestOperation *)operation responseXMLDocument];
             failure(operation.request, operation.response, error, XMLDocument);
         }
     }];

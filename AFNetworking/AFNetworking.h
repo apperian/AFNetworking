@@ -30,7 +30,7 @@
 
     #import "APAFHTTPRequestOperation.h"
     #import "APAFJSONRequestOperation.h"
-    #import "AFXMLRequestOperation.h"
+    #import "APAFXMLRequestOperation.h"
     #import "APAFPropertyListRequestOperation.h"
     #import "APAFHTTPClient.h"
 
