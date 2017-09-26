@@ -37,7 +37,7 @@
 static char kAFImageRequestOperationObjectKey;
 
 @interface UIImageView (_AFNetworking)
-@property (readwrite, nonatomic, strong, setter = af_setImageRequestOperation:) AFImageRequestOperation *af_imageRequestOperation;
+@property (readwrite, nonatomic, strong, setter = af_setImageRequestOperation:) APAFImageRequestOperation *af_imageRequestOperation;
 @end
 
 @implementation UIImageView (_AFNetworking)
@@ -52,7 +52,7 @@ static char kAFImageRequestOperationObjectKey;
     return (APAFHTTPRequestOperation *)objc_getAssociatedObject(self, &kAFImageRequestOperationObjectKey);
 }
 
-- (void)af_setImageRequestOperation:(AFImageRequestOperation *)imageRequestOperation {
+- (void)af_setImageRequestOperation:(APAFImageRequestOperation *)imageRequestOperation {
     objc_setAssociatedObject(self, &kAFImageRequestOperationObjectKey, imageRequestOperation, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
@@ -111,7 +111,7 @@ static char kAFImageRequestOperationObjectKey;
     } else {
         self.image = placeholderImage;
 
-        AFImageRequestOperation *requestOperation = [[AFImageRequestOperation alloc] initWithRequest:urlRequest];
+        APAFImageRequestOperation *requestOperation = [[APAFImageRequestOperation alloc] initWithRequest:urlRequest];
         [requestOperation setCompletionBlockWithSuccess:^(APAFHTTPRequestOperation *operation, id responseObject) {
             if ([urlRequest isEqual:[self.af_imageRequestOperation request]]) {
                 if (success) {

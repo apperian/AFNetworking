@@ -1,4 +1,4 @@
-// AFImageRequestOperation.m
+// APAFImageRequestOperation.m
 //
 // Copyright (c) 2011 Gowalla (http://gowalla.com/)
 //
@@ -20,7 +20,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "AFImageRequestOperation.h"
+#import "APAFImageRequestOperation.h"
 
 static dispatch_queue_t image_request_operation_processing_queue() {
     static dispatch_queue_t af_image_request_operation_processing_queue;
@@ -32,7 +32,7 @@ static dispatch_queue_t image_request_operation_processing_queue() {
     return af_image_request_operation_processing_queue;
 }
 
-@interface AFImageRequestOperation ()
+@interface APAFImageRequestOperation ()
 #if defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
 @property (readwrite, nonatomic, strong) UIImage *responseImage;
 #elif defined(__MAC_OS_X_VERSION_MIN_REQUIRED)
@@ -40,7 +40,7 @@ static dispatch_queue_t image_request_operation_processing_queue() {
 #endif
 @end
 
-@implementation AFImageRequestOperation
+@implementation APAFImageRequestOperation
 @synthesize responseImage = _responseImage;
 #if defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
 @synthesize imageScale = _imageScale;
@@ -75,7 +75,7 @@ static dispatch_queue_t image_request_operation_processing_queue() {
 										 success:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image))success
 										 failure:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error))failure
 {
-    AFImageRequestOperation *requestOperation = [(AFImageRequestOperation *)[self alloc] initWithRequest:urlRequest];
+    APAFImageRequestOperation *requestOperation = [(APAFImageRequestOperation *)[self alloc] initWithRequest:urlRequest];
     [requestOperation setCompletionBlockWithSuccess:^(APAFHTTPRequestOperation *operation, id responseObject) {
         if (success) {
             UIImage *image = responseObject;
@@ -108,7 +108,7 @@ static dispatch_queue_t image_request_operation_processing_queue() {
 										 success:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, NSImage *image))success
 										 failure:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error))failure
 {
-    AFImageRequestOperation *requestOperation = [(AFImageRequestOperation *)[self alloc] initWithRequest:urlRequest];
+    APAFImageRequestOperation *requestOperation = [(APAFImageRequestOperation *)[self alloc] initWithRequest:urlRequest];
     [requestOperation setCompletionBlockWithSuccess:^(APAFHTTPRequestOperation *operation, id responseObject) {
         if (success) {
             NSImage *image = responseObject;

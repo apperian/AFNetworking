@@ -34,7 +34,7 @@
     #import "APAFPropertyListRequestOperation.h"
     #import "APAFHTTPClient.h"
 
-    #import "AFImageRequestOperation.h"
+    #import "APAFImageRequestOperation.h"
 
     #if defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
         #import "APAFNetworkActivityIndicatorManager.h"
