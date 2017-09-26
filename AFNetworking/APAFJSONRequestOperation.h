@@ -1,4 +1,4 @@
-// AFJSONRequestOperation.h
+// APAFJSONRequestOperation.h
 //
 // Copyright (c) 2011 Gowalla (http://gowalla.com/)
 // 
@@ -24,18 +24,18 @@
 #import "APAFHTTPRequestOperation.h"
 
 /**
- `AFJSONRequestOperation` is a subclass of `APAFHTTPRequestOperation` for downloading and working with JSON response data.
+ `APAFJSONRequestOperation` is a subclass of `APAFHTTPRequestOperation` for downloading and working with JSON response data.
  
  ## Acceptable Content Types
  
- By default, `AFJSONRequestOperation` accepts the following MIME types, which includes the official standard, `application/json`, as well as other commonly-used types:
+ By default, `APAFJSONRequestOperation` accepts the following MIME types, which includes the official standard, `application/json`, as well as other commonly-used types:
  
  - `application/json`
  - `text/json`
 
  @warning JSON parsing will use the built-in `NSJSONSerialization` class.
  */
-@interface AFJSONRequestOperation : APAFHTTPRequestOperation
+@interface APAFJSONRequestOperation : APAFHTTPRequestOperation
 
 ///----------------------------
 /// @name Getting Response Data
@@ -56,7 +56,7 @@
 ///----------------------------------
 
 /**
- Creates and returns an `AFJSONRequestOperation` object and sets the specified success and failure callbacks.
+ Creates and returns an `APAFJSONRequestOperation` object and sets the specified success and failure callbacks.
  
  @param urlRequest The request object to be loaded asynchronously during execution of the operation
  @param success A block object to be executed when the operation finishes successfully. This block has no return value and takes three arguments: the request sent from the client, the response received from the server, and the JSON object created from the response data of request.

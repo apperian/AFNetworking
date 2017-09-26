@@ -99,7 +99,7 @@
 ///-----------------------------------------------------
 
 /**
- A Boolean value determining whether or not the class can process the specified request. For example, `AFJSONRequestOperation` may check to make sure the content type was `application/json` or the URL path extension was `.json`.
+ A Boolean value determining whether or not the class can process the specified request. For example, `APAFJSONRequestOperation` may check to make sure the content type was `application/json` or the URL path extension was `.json`.
 
  @param urlRequest The request that is determined to be supported or not supported for this class.
  */

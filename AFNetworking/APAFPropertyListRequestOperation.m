@@ -1,4 +1,4 @@
-// AFPropertyListRequestOperation.m
+// APAFPropertyListRequestOperation.m
 //
 // Copyright (c) 2011 Gowalla (http://gowalla.com/)
 //
@@ -20,7 +20,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "AFPropertyListRequestOperation.h"
+#import "APAFPropertyListRequestOperation.h"
 
 static dispatch_queue_t property_list_request_operation_processing_queue() {
     static dispatch_queue_t af_property_list_request_operation_processing_queue;
@@ -32,13 +32,13 @@ static dispatch_queue_t property_list_request_operation_processing_queue() {
     return af_property_list_request_operation_processing_queue;
 }
 
-@interface AFPropertyListRequestOperation ()
+@interface APAFPropertyListRequestOperation ()
 @property (readwrite, nonatomic) id responsePropertyList;
 @property (readwrite, nonatomic, assign) NSPropertyListFormat propertyListFormat;
 @property (readwrite, nonatomic) NSError *propertyListError;
 @end
 
-@implementation AFPropertyListRequestOperation
+@implementation APAFPropertyListRequestOperation
 @synthesize responsePropertyList = _responsePropertyList;
 @synthesize propertyListReadOptions = _propertyListReadOptions;
 @synthesize propertyListFormat = _propertyListFormat;
@@ -48,14 +48,14 @@ static dispatch_queue_t property_list_request_operation_processing_queue() {
 												success:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, id propertyList))success
 												failure:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id propertyList))failure
 {
-    AFPropertyListRequestOperation *requestOperation = [(AFPropertyListRequestOperation *)[self alloc] initWithRequest:request];
+    APAFPropertyListRequestOperation *requestOperation = [(APAFPropertyListRequestOperation *)[self alloc] initWithRequest:request];
     [requestOperation setCompletionBlockWithSuccess:^(APAFHTTPRequestOperation *operation, id responseObject) {
         if (success) {
             success(operation.request, operation.response, responseObject);
         }
     } failure:^(APAFHTTPRequestOperation *operation, NSError *error) {
         if (failure) {
-            failure(operation.request, operation.response, error, [(AFPropertyListRequestOperation *)operation responsePropertyList]);
+            failure(operation.request, operation.response, error, [(APAFPropertyListRequestOperation *)operation responsePropertyList]);
         }
     }];
 

@@ -29,15 +29,15 @@
     #import "AFURLConnectionOperation.h"
 
     #import "APAFHTTPRequestOperation.h"
-    #import "AFJSONRequestOperation.h"
+    #import "APAFJSONRequestOperation.h"
     #import "AFXMLRequestOperation.h"
-    #import "AFPropertyListRequestOperation.h"
+    #import "APAFPropertyListRequestOperation.h"
     #import "APAFHTTPClient.h"
 
     #import "AFImageRequestOperation.h"
 
     #if defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
-        #import "AFNetworkActivityIndicatorManager.h"
+        #import "APAFNetworkActivityIndicatorManager.h"
         #import "UIImageView+AFNetworking.h"
     #endif
 #endif /* _AFNETWORKING_ */

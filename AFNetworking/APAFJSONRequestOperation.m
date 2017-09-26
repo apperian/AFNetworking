@@ -1,4 +1,4 @@
-// AFJSONRequestOperation.m
+// APAFJSONRequestOperation.m
 //
 // Copyright (c) 2011 Gowalla (http://gowalla.com/)
 //
@@ -20,7 +20,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "AFJSONRequestOperation.h"
+#import "APAFJSONRequestOperation.h"
 
 static dispatch_queue_t json_request_operation_processing_queue() {
     static dispatch_queue_t af_json_request_operation_processing_queue;
@@ -32,13 +32,13 @@ static dispatch_queue_t json_request_operation_processing_queue() {
     return af_json_request_operation_processing_queue;
 }
 
-@interface AFJSONRequestOperation ()
+@interface APAFJSONRequestOperation ()
 @property (readwrite, nonatomic, strong) id responseJSON;
 @property (readwrite, nonatomic, strong) NSError *JSONError;
 @property (readwrite, nonatomic, strong) NSRecursiveLock *lock;
 @end
 
-@implementation AFJSONRequestOperation
+@implementation APAFJSONRequestOperation
 @synthesize responseJSON = _responseJSON;
 @synthesize JSONReadingOptions = _JSONReadingOptions;
 @synthesize JSONError = _JSONError;
@@ -48,14 +48,14 @@ static dispatch_queue_t json_request_operation_processing_queue() {
 										success:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, id JSON))success
 										failure:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON))failure
 {
-    AFJSONRequestOperation *requestOperation = [(AFJSONRequestOperation *)[self alloc] initWithRequest:urlRequest];
+    APAFJSONRequestOperation *requestOperation = [(APAFJSONRequestOperation *)[self alloc] initWithRequest:urlRequest];
     [requestOperation setCompletionBlockWithSuccess:^(APAFHTTPRequestOperation *operation, id responseObject) {
         if (success) {
             success(operation.request, operation.response, responseObject);
         }
     } failure:^(APAFHTTPRequestOperation *operation, NSError *error) {
         if (failure) {
-            failure(operation.request, operation.response, error, [(AFJSONRequestOperation *)operation responseJSON]);
+            failure(operation.request, operation.response, error, [(APAFJSONRequestOperation *)operation responseJSON]);
         }
     }];
 
