@@ -21,12 +21,12 @@
 // THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
-#import "AFHTTPRequestOperation.h"
+#import "APAFHTTPRequestOperation.h"
 
 #import <Availability.h>
 
 /**
- `AFXMLRequestOperation` is a subclass of `AFHTTPRequestOperation` for downloading and working with XML response data.
+ `AFXMLRequestOperation` is a subclass of `APAFHTTPRequestOperation` for downloading and working with XML response data.
 
  ## Acceptable Content Types
 
@@ -39,7 +39,7 @@
 
  When `AFXMLRequestOperation` is registered with `AFHTTPClient`, the response object in the success callback of `HTTPRequestOperationWithRequest:success:failure:` will be an instance of `NSXMLParser`. On platforms that support `NSXMLDocument`, you have the option to ignore the response object, and simply use the `responseXMLDocument` property of the operation argument of the callback.
  */
-@interface AFXMLRequestOperation : AFHTTPRequestOperation
+@interface AFXMLRequestOperation : APAFHTTPRequestOperation
 
 ///----------------------------
 /// @name Getting Response Data

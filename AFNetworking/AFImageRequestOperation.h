@@ -21,7 +21,7 @@
 // THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
-#import "AFHTTPRequestOperation.h"
+#import "APAFHTTPRequestOperation.h"
 
 #import <Availability.h>
 
@@ -32,7 +32,7 @@
 #endif
 
 /**
- `AFImageRequestOperation` is a subclass of `AFHTTPRequestOperation` for downloading and processing images.
+ `AFImageRequestOperation` is a subclass of `APAFHTTPRequestOperation` for downloading and processing images.
 
  ## Acceptable Content Types
 
@@ -49,7 +49,7 @@
  - `image/x-xbitmap`
  - `image/x-win-bitmap`
  */
-@interface AFImageRequestOperation : AFHTTPRequestOperation
+@interface AFImageRequestOperation : APAFHTTPRequestOperation
 
 /**
  An image constructed from the response data. If an error occurs during the request, `nil` will be returned, and the `error` property will be set to the error.

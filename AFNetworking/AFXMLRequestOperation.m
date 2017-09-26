@@ -54,11 +54,11 @@ static dispatch_queue_t xml_request_operation_processing_queue() {
 											 failure:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, NSXMLParser *XMLParser))failure
 {
     AFXMLRequestOperation *requestOperation = [(AFXMLRequestOperation *)[self alloc] initWithRequest:urlRequest];
-    [requestOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [requestOperation setCompletionBlockWithSuccess:^(APAFHTTPRequestOperation *operation, id responseObject) {
         if (success) {
             success(operation.request, operation.response, responseObject);
         }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(APAFHTTPRequestOperation *operation, NSError *error) {
         if (failure) {
             failure(operation.request, operation.response, error, [(AFXMLRequestOperation *)operation responseXMLParser]);
         }
@@ -73,12 +73,12 @@ static dispatch_queue_t xml_request_operation_processing_queue() {
 											   failure:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, NSXMLDocument *document))failure
 {
     AFXMLRequestOperation *requestOperation = [[self alloc] initWithRequest:urlRequest];
-    [requestOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, __unused id responseObject) {
+    [requestOperation setCompletionBlockWithSuccess:^(APAFHTTPRequestOperation *operation, __unused id responseObject) {
         if (success) {
             NSXMLDocument *XMLDocument = [(AFXMLRequestOperation *)operation responseXMLDocument];
             success(operation.request, operation.response, XMLDocument);
         }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(APAFHTTPRequestOperation *operation, NSError *error) {
         if (failure) {
             NSXMLDocument *XMLDocument = [(AFXMLRequestOperation *)operation responseXMLDocument];
             failure(operation.request, operation.response, error, XMLDocument);
@@ -126,7 +126,7 @@ static dispatch_queue_t xml_request_operation_processing_queue() {
     self.responseXMLParser.delegate = nil;
 }
 
-#pragma mark - AFHTTPRequestOperation
+#pragma mark - APAFHTTPRequestOperation
 
 + (NSSet *)acceptableContentTypes {
     return [NSSet setWithObjects:@"application/xml", @"text/xml", nil];
@@ -136,8 +136,8 @@ static dispatch_queue_t xml_request_operation_processing_queue() {
     return [[[request URL] pathExtension] isEqualToString:@"xml"] || [super canProcessRequest:request];
 }
 
-- (void)setCompletionBlockWithSuccess:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-                              failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+- (void)setCompletionBlockWithSuccess:(void (^)(APAFHTTPRequestOperation *operation, id responseObject))success
+                              failure:(void (^)(APAFHTTPRequestOperation *operation, NSError *error))failure
 {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-retain-cycles"

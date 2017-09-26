@@ -22,7 +22,7 @@
 
 #import "AFNetworkActivityIndicatorManager.h"
 
-#import "AFHTTPRequestOperation.h"
+#import "APAFHTTPRequestOperation.h"
 
 #if defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
 static NSTimeInterval const kAFNetworkActivityIndicatorInvisibilityDelay = 0.17;

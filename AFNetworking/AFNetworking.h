@@ -28,11 +28,11 @@
 
     #import "AFURLConnectionOperation.h"
 
-    #import "AFHTTPRequestOperation.h"
+    #import "APAFHTTPRequestOperation.h"
     #import "AFJSONRequestOperation.h"
     #import "AFXMLRequestOperation.h"
     #import "AFPropertyListRequestOperation.h"
-    #import "AFHTTPClient.h"
+    #import "APAFHTTPClient.h"
 
     #import "AFImageRequestOperation.h"
 
