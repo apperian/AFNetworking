@@ -26,11 +26,12 @@
 #if defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
 #import "UIImageView+AFNetworking.h"
 
-@interface AFImageCache : NSCache
+@interface AP_AFImageCache : NSCache
 - (UIImage *)cachedImageForRequest:(NSURLRequest *)request;
 - (void)cacheImage:(UIImage *)image
         forRequest:(NSURLRequest *)request;
 @end
+@compatibility_alias AFImageCache AP_AFImageCache;
 
 #pragma mark -
 

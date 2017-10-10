@@ -49,7 +49,7 @@
  - `image/x-xbitmap`
  - `image/x-win-bitmap`
  */
-@interface AFImageRequestOperation : AFHTTPRequestOperation
+@interface AP_AFImageRequestOperation : AFHTTPRequestOperation
 
 /**
  An image constructed from the response data. If an error occurs during the request, `nil` will be returned, and the `error` property will be set to the error.
@@ -106,3 +106,4 @@
 #endif
 
 @end
+@compatibility_alias AFImageRequestOperation AP_AFImageRequestOperation;

@@ -35,7 +35,7 @@
 
  @warning JSON parsing will use the built-in `NSJSONSerialization` class.
  */
-@interface AFJSONRequestOperation : AFHTTPRequestOperation
+@interface AP_AFJSONRequestOperation : AP_AFHTTPRequestOperation
 
 ///----------------------------
 /// @name Getting Response Data
@@ -69,3 +69,4 @@
                                         failure:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON))failure;
 
 @end
+@compatibility_alias AFJSONRequestOperation AP_AFJSONRequestOperation;

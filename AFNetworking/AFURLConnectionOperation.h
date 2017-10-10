@@ -99,7 +99,7 @@ typedef enum {
 } AFURLConnectionOperationSSLPinningMode;
 #endif
 
-@interface AFURLConnectionOperation : NSOperation <NSURLConnectionDelegate,
+@interface AP_AFURLConnectionOperation : NSOperation <NSURLConnectionDelegate,
 #if (defined(__IPHONE_OS_VERSION_MIN_REQUIRED) && __IPHONE_OS_VERSION_MIN_REQUIRED >= 50000) || \
     (defined(__MAC_OS_X_VERSION_MIN_REQUIRED) && __MAC_OS_X_VERSION_MIN_REQUIRED >= 1080)
 NSURLConnectionDataDelegate, 
@@ -337,6 +337,7 @@ NSCoding, NSCopying>
 - (void)setCacheResponseBlock:(NSCachedURLResponse * (^)(NSURLConnection *connection, NSCachedURLResponse *cachedResponse))block;
 
 @end
+@compatibility_alias AFURLConnectionOperation AP_AFURLConnectionOperation;
 
 ///----------------
 /// @name Constants

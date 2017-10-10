@@ -98,10 +98,10 @@ typedef enum {
     AFPropertyListParameterEncoding,
 } AFHTTPClientParameterEncoding;
 
-@class AFHTTPRequestOperation;
+@class AP_AFHTTPRequestOperation;
 @protocol AFMultipartFormData;
 
-@interface AFHTTPClient : NSObject <NSCoding, NSCopying>
+@interface AP_AFHTTPClient : NSObject <NSCoding, NSCopying>
 
 ///---------------------------------------
 /// @name Accessing HTTP Client Properties
@@ -317,9 +317,9 @@ typedef enum {
  @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes two arguments: the created request operation and the object created from the response data of request.
  @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data. This block has no return value and takes two arguments:, the created request operation and the `NSError` object describing the network or parsing error that occurred.
  */
-- (AFHTTPRequestOperation *)HTTPRequestOperationWithRequest:(NSURLRequest *)urlRequest
-                                                    success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-                                                    failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+- (AP_AFHTTPRequestOperation *)HTTPRequestOperationWithRequest:(NSURLRequest *)urlRequest
+                                                    success:(void (^)(AP_AFHTTPRequestOperation *operation, id responseObject))success
+                                                    failure:(void (^)(AP_AFHTTPRequestOperation *operation, NSError *error))failure;
 
 ///----------------------------------------
 /// @name Managing Enqueued HTTP Operations
@@ -330,7 +330,7 @@ typedef enum {
 
  @param operation The HTTP request operation to be enqueued.
  */
-- (void)enqueueHTTPRequestOperation:(AFHTTPRequestOperation *)operation;
+- (void)enqueueHTTPRequestOperation:(AP_AFHTTPRequestOperation *)operation;
 
 /**
  Cancels all operations in the HTTP client's operation queue whose URLs match the specified HTTP method and path.
@@ -386,8 +386,8 @@ typedef enum {
  */
 - (void)getPath:(NSString *)path
      parameters:(NSDictionary *)parameters
-        success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-        failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+        success:(void (^)(AP_AFHTTPRequestOperation *operation, id responseObject))success
+        failure:(void (^)(AP_AFHTTPRequestOperation *operation, NSError *error))failure;
 
 /**
  Creates an `AFHTTPRequestOperation` with a `POST` request, and enqueues it to the HTTP client's operation queue.
@@ -401,8 +401,8 @@ typedef enum {
  */
 - (void)postPath:(NSString *)path
       parameters:(NSDictionary *)parameters
-         success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-         failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+         success:(void (^)(AP_AFHTTPRequestOperation *operation, id responseObject))success
+         failure:(void (^)(AP_AFHTTPRequestOperation *operation, NSError *error))failure;
 
 /**
  Creates an `AFHTTPRequestOperation` with a `PUT` request, and enqueues it to the HTTP client's operation queue.
@@ -416,8 +416,8 @@ typedef enum {
  */
 - (void)putPath:(NSString *)path
      parameters:(NSDictionary *)parameters
-        success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-        failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+        success:(void (^)(AP_AFHTTPRequestOperation *operation, id responseObject))success
+        failure:(void (^)(AP_AFHTTPRequestOperation *operation, NSError *error))failure;
 
 /**
  Creates an `AFHTTPRequestOperation` with a `DELETE` request, and enqueues it to the HTTP client's operation queue.
@@ -431,8 +431,8 @@ typedef enum {
  */
 - (void)deletePath:(NSString *)path
         parameters:(NSDictionary *)parameters
-           success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-           failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+           success:(void (^)(AP_AFHTTPRequestOperation *operation, id responseObject))success
+           failure:(void (^)(AP_AFHTTPRequestOperation *operation, NSError *error))failure;
 
 /**
  Creates an `AFHTTPRequestOperation` with a `PATCH` request, and enqueues it to the HTTP client's operation queue.
@@ -446,9 +446,11 @@ typedef enum {
  */
 - (void)patchPath:(NSString *)path
        parameters:(NSDictionary *)parameters
-          success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-          failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+          success:(void (^)(AP_AFHTTPRequestOperation *operation, id responseObject))success
+          failure:(void (^)(AP_AFHTTPRequestOperation *operation, NSError *error))failure;
 @end
+
+@compatibility_alias AFHTTPClient AP_AFHTTPClient;
 
 ///----------------
 /// @name Constants

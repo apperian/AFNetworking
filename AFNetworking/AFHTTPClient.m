@@ -89,7 +89,7 @@ static NSString * AFPercentEscapedQueryStringPairMemberFromStringWithEncoding(NS
 
 #pragma mark -
 
-@interface AFQueryStringPair : NSObject
+@interface AP_AFQueryStringPair : NSObject
 @property (readwrite, nonatomic, strong) id field;
 @property (readwrite, nonatomic, strong) id value;
 
@@ -97,6 +97,7 @@ static NSString * AFPercentEscapedQueryStringPairMemberFromStringWithEncoding(NS
 
 - (NSString *)URLEncodedStringValueWithEncoding:(NSStringEncoding)stringEncoding;
 @end
+@compatibility_alias AFQueryStringPair AP_AFQueryStringPair;
 
 @implementation AFQueryStringPair
 @synthesize field = _field;
@@ -172,12 +173,13 @@ NSArray * AFQueryStringPairsFromKeyAndValue(NSString *key, id value) {
     return mutableQueryStringComponents;
 }
 
-@interface AFStreamingMultipartFormData : NSObject <AFMultipartFormData>
+@interface AP_AFStreamingMultipartFormData : NSObject <AFMultipartFormData>
 - (id)initWithURLRequest:(NSMutableURLRequest *)urlRequest
           stringEncoding:(NSStringEncoding)encoding;
 
 - (NSMutableURLRequest *)requestByFinalizingMultipartFormData;
 @end
+@compatibility_alias AFStreamingMultipartFormData AP_AFStreamingMultipartFormData;
 
 #pragma mark -
 
@@ -784,7 +786,7 @@ static inline NSString * AFContentTypeForPathExtension(NSString *extension) {
 NSUInteger const kAFUploadStream3GSuggestedPacketSize = 1024 * 16;
 NSTimeInterval const kAFUploadStream3GSuggestedDelay = 0.2;
 
-@interface AFHTTPBodyPart : NSObject
+@interface AP_AFHTTPBodyPart : NSObject
 @property (nonatomic, assign) NSStringEncoding stringEncoding;
 @property (nonatomic, strong) NSDictionary *headers;
 @property (nonatomic, strong) id body;
@@ -800,8 +802,9 @@ NSTimeInterval const kAFUploadStream3GSuggestedDelay = 0.2;
 - (NSInteger)read:(uint8_t *)buffer
         maxLength:(NSUInteger)length;
 @end
+@compatibility_alias AFHTTPBodyPart AP_AFHTTPBodyPart;
 
-@interface AFMultipartBodyStream : NSInputStream <NSStreamDelegate>
+@interface AP_AFMultipartBodyStream : NSInputStream <NSStreamDelegate>
 @property (nonatomic, assign) NSUInteger numberOfBytesInPacket;
 @property (nonatomic, assign) NSTimeInterval delay;
 @property (nonatomic, strong) NSInputStream *inputStream;
@@ -812,6 +815,7 @@ NSTimeInterval const kAFUploadStream3GSuggestedDelay = 0.2;
 - (void)setInitialAndFinalBoundaries;
 - (void)appendHTTPBodyPart:(AFHTTPBodyPart *)bodyPart;
 @end
+@compatibility_alias AFMultipartBodyStream AP_AFMultipartBodyStream;
 
 #pragma mark -
 

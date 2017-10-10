@@ -32,7 +32,7 @@
 
  - `application/x-plist`
  */
-@interface AFPropertyListRequestOperation : AFHTTPRequestOperation
+@interface AP_AFPropertyListRequestOperation : AFHTTPRequestOperation
 
 ///----------------------------
 /// @name Getting Response Data
@@ -66,3 +66,4 @@
 												failure:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id propertyList))failure;
 
 @end
+@compatibility_alias AFPropertyListRequestOperation AP_AFPropertyListRequestOperation;

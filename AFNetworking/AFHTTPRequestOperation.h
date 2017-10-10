@@ -26,7 +26,7 @@
 /**
  `AFHTTPRequestOperation` is a subclass of `AFURLConnectionOperation` for requests using the HTTP or HTTPS protocols. It encapsulates the concept of acceptable status codes and content types, which determine the success or failure of a request.
  */
-@interface AFHTTPRequestOperation : AFURLConnectionOperation
+@interface AP_AFHTTPRequestOperation : AFURLConnectionOperation
 
 ///----------------------------------------------
 /// @name Getting HTTP URL Connection Information
@@ -117,10 +117,11 @@
  @param success The block to be executed on the completion of a successful request. This block has no return value and takes two arguments: the receiver operation and the object constructed from the response data of the request.
  @param failure The block to be executed on the completion of an unsuccessful request. This block has no return value and takes two arguments: the receiver operation and the error that occurred during the request.
  */
-- (void)setCompletionBlockWithSuccess:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-                              failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+- (void)setCompletionBlockWithSuccess:(void (^)(AP_AFHTTPRequestOperation *operation, id responseObject))success
+                              failure:(void (^)(AP_AFHTTPRequestOperation *operation, NSError *error))failure;
 
 @end
+@compatibility_alias AFHTTPRequestOperation AP_AFHTTPRequestOperation;
 
 ///----------------
 /// @name Functions
